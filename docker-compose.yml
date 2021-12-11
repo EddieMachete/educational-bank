@@ -1,0 +1,48 @@
+services:
+#   backend:
+#         build: backend
+#         secrets:
+#             - db-password
+#         depends_on:
+#             - db
+  api-rails: 
+        build:
+            context: .docker/api-rails
+            # target: development
+        command: bundle exec rails s -p 3000 -b '0.0.0.0'
+        volumes: 
+            - ".:/api-rails"
+        ports: 
+            - "3001:3000"
+        depends_on:
+            - db
+        links:
+            - db
+        environment:
+            DB_USER: root
+            DB_NAME: app
+            DB_PASSWORD: password
+            DB_HOST: db
+  db:
+        image: mariadb
+        restart: always
+        secrets:
+            - db-password
+        volumes:
+            - db-data:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=example
+            - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
+        expose:
+            - 3306
+  proxy:
+        build: proxy
+        ports:
+            - 80:80
+        depends_on:
+            - api-rails
+volumes:
+    db-data:
+secrets:
+    db-password:
+        file: db/password.txt
