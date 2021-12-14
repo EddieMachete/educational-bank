@@ -10,7 +10,7 @@ const tsconfig = {
   paths: {
     "@app/*": ["src/app/*"],
     "@core/*": ["src/core/*"],
-    "@web/*": ["src/web/*"],
+    "@advisor/*": ["src/advisor/*"],
   }
 };
 

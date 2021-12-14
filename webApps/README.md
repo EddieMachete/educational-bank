@@ -10,3 +10,6 @@ This is a base projet to quickly get up and running when developing web applicat
 * Build commands for web and node applications
 * Test classes using Jest
 * Simple data store class
+
+docker build . -t educational-bank-web
+We will have to then run the image and specify a port
