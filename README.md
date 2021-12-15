@@ -12,3 +12,5 @@ echo $UID
 https://dev.to/itnext/setting-up-ruby-on-rails-with-docker-and-mysql-3mpc
 
 docker-compose run app rails new . --force --database=mysql --skip-bundle
+
+docker build -t api-rails .
