@@ -11,6 +11,10 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs li
 ADD . /api-rails
 WORKDIR /api-rails
 
+# Configure an entry point, so we don't need to specify
+# "bundle exec" for each of our commands.
+# ENTRYPOINT ["bundle", "exec"]
+
 # Add all rails dependencies
 RUN bundle install
 
