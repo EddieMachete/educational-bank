@@ -18,7 +18,8 @@ WORKDIR /api-rails
 # Add all rails dependencies
 RUN bundle install
 
-EXPOSE 3000
+RUN rails g mini_test:install
 
-# CMD ["bash"]
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# RUN rails test
+# RUN rails test test/app/controllers/application_controller_test.rb:3
+# RUN rails -Itest app/controllers/application_controller_test.rb
