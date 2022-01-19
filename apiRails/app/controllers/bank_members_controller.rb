@@ -15,12 +15,14 @@ class BankMembersController < ApplicationController
     def create
         # 1. API receives a request which includes first name and last name
         # 2. API validates the input
-        params.require(:bankMember).require(:firstName, :lastName)
+        params.require(:bankMember).require([:firstName, :lastName])
 
         # 3. API creates the new bank member
+        bankMemberModel = params[:bankMember]
+
         bankMember = BankMember.new(
-            firstName: params[:firstName],
-            lastName: params[:lastName],
+            firstName: bankMemberModel[:firstName],
+            lastName: bankMemberModel[:lastName],
         )
 
         if bankMember.save
