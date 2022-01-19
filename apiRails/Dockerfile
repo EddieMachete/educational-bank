@@ -18,6 +18,9 @@ WORKDIR /api-rails
 # Add all rails dependencies
 RUN bundle install
 
+# Update SQLite3 Database
+RUN rails db:migrate
+
 EXPOSE 3000
 
 # CMD ["bash"]

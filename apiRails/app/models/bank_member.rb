@@ -1,0 +1,2 @@
+class BankMember < ApplicationRecord
+end
