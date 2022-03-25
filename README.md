@@ -22,6 +22,20 @@ This GitHub project is a mono-repo which includes the following elements:
 
 Features are initially documented in the [wiki](https://github.com/EddieMachete/educational-bank/wiki). The contents of the wiki are used to generate GitHub issues which are grouped under features. I use GitHub milestones to create those features and group issues. The project [Educational Bank](https://github.com/users/EddieMachete/projects/1/views/1) is used to track progress.
 
+## Developiong inside a VS Code Dev Container
+
+1. Open this project as a Dev Container in VS Code by selecting the option `Clone repository in container volume` or `Open folder in container` (preferred)
+2. In the terminal, run the following commands:
+   * `cd apiRails`
+   * `rvm install ruby-2.7.5`
+   * `gem install bundler`
+   * `bundle`
+   * `rails db:migrate RAILS_ENV=development`
+3. Start the project burunning in the terminal the command `rails server`
+4. In yur browser, navigate to http://127.0.0.1:3000/
+
+This project contains a _Dev Container definition_ under `.devcontainer/devcontainer.json` which instructs VS Code what types of containers to start to setup this development environment. It also forwards the port so we can view the project on the browser. The above commands are needed to initialize rails so we can run the development server.
+
 ## Docker build
 
 docker build -t rails-toolbox --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) -f Dockerfile.rails .
