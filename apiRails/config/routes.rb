@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   # get '/persons' => 'persons#index'
   resources :banks, only: [:index, :create]
-  resources :persons, only: [:index, :create]
+  resources :persons, only: [:index, :show, :create]
 end

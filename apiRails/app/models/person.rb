@@ -1,3 +1,5 @@
 class Person < ApplicationRecord
-    has_many :accounts, dependent: :destroy
+  validates :firstName, presence: true
+  validates :lastName, presence: true
+  has_many :accounts, dependent: :destroy
 end

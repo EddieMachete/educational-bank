@@ -4,7 +4,7 @@ class PersonsController < ApplicationController
   end
 
   def show
-    person = Post.find(params[:id])
+    person = Person.find(params[:id])
 
     if stale?(last_modified: person.updated_at)
       render json: person
