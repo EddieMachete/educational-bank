@@ -28,8 +28,7 @@ Features are initially documented in the [wiki](https://github.com/EddieMachete/
 2. In the terminal, run the following commands:
    * `cd apiRails`
    * `rvm install ruby-2.7.5`
-   * `gem install bundler`
-   * `bundle`
+   * `bundle install`
    * `rails db:migrate RAILS_ENV=development`
 3. Start the project burunning in the terminal the command `rails server`
 4. In yur browser, navigate to http://127.0.0.1:3000/
@@ -52,3 +51,14 @@ docker build -t api-rails .
 docker build -t api-rails -f test.Dockerfile .
 The -t (target) names the docker image
 The -f (file) tells docker which dockerfile to use
+
+## Running unit tests
+
+To run specific unit test:
+
+1. Ensure the test database has all migrations by running `rails db:migrate RAILS_ENV=test` under `apiRails`
+2. run `rake test TEST=[test_path]`, e.g. `rake test TEST=test/controllers/persons_controller_test.rb`
+
+
+`rake db:reset db:migrate RAILS_ENV=test`
+`rake db:drop db:create db:migrate RAILS_ENV=test`
