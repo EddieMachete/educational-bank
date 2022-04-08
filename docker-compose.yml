@@ -17,3 +17,12 @@ services:
         tty: true
         volumes:
             - ./db/:/root/db/
+    api-rails-test: 
+        build:
+            context: apiRails/
+            # target: development
+        command: bundle exec web rails test
+        container_name: api-rails-test
+        volumes: 
+            - ".:/api-rails-test"
+

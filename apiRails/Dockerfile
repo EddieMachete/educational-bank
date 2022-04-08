@@ -1,6 +1,6 @@
 # this is the file that will be referenced every time we use the build command on the command-line.
 
-FROM ruby:2.6.9-slim
+FROM ruby:2.7.5-slim
 
 # build-essential is a package of trusted compilers for our application.
 # libpq-dev is a compiler system to help with port forwarding to databases from virtual machines. A detailed explanation is in the link.
@@ -17,6 +17,9 @@ WORKDIR /api-rails
 
 # Add all rails dependencies
 RUN bundle install
+
+# Update SQLite3 Database
+RUN rails db:migrate
 
 EXPOSE 3000
 
